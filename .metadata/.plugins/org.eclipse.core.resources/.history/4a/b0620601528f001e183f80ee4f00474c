@@ -1,0 +1,62 @@
+package in.co.vwits.sms.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import in.co.vwits.sms.model.Student;
+import in.co.vwits.sms.service.StudentService;
+//@Controller is use to create web controllers 
+//@Controller
+@RestController //@Controller + @ResponseBody = @RestController
+@RequestMapping("/student")
+public class StudentController {
+	@Autowired
+	private StudentService  service;
+	@GetMapping(value="/{rollno}")
+	public Student findStudentById(@PathVariable int rollno) {
+		System.out.println(rollno);
+		Student s=new Student();
+		s.setRollno(1);
+		s.setName("amot");
+		return s;//here we are returning student java object but it doesn't make any sense
+		}
+	@DeleteMapping(value="/{rollno}")
+	public void deleteByRollNo(@PathVariable int rollno) {
+		System.out.println("delete by rollno : "+ rollno);
+	}
+	@GetMapping()
+	public List<Student> findAll() {
+		List<Student> studentList=new ArrayList<Student>();
+		
+		return this.service.findAll();
+		//This method call is talking to service layer, which in tern calling dao which in terms fetching data from database
+		}
+	
+	@PutMapping(value="/{rollno}")
+	public Student updateStudent(@PathVariable int rollno,@RequestBody Student studentToBeupdated) { 
+		System.out.println(studentToBeupdated);
+		Student updatedStudent=null;
+		return updatedStudent;
+	}
+//	@ResponseBody
+//	@RequestMapping(method=RequestMethod.POST)  
+	@PostMapping()
+	public Student createNewStudent(@RequestBody Student newStudent) { 
+		Student createStudent=newStudent;
+		return createStudent;
+	}
+	
+}

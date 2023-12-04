@@ -1,0 +1,14 @@
+package in.co.vwits.sms.service;
+
+import java.util.List;
+
+import in.co.vwits.sms.model.User;
+
+public interface UserServices {
+ User SaveUser(User user);
+ User getUserById(User user);
+ List<User> getAllUsers();
+
+
+}
+

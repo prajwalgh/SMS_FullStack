@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename field &apos;dao&apos; in &apos;in.co.vwits.sms.service.impl.StudentServiceImpl&apos; to &apos;repo&apos;&#x0D;&#x0A;- Original project: &apos;2_sms_api_springboot&apos;&#x0D;&#x0A;- Original element: &apos;in.co.vwits.sms.service.impl.StudentServiceImpl.dao&apos;&#x0D;&#x0A;- Renamed element: &apos;in.co.vwits.sms.service.impl.StudentServiceImpl.repo&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" delegate="false" deprecate="false" description="Rename field &apos;dao&apos;" flags="589826" getter="false" id="org.eclipse.jdt.ui.rename.field" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;in.co.vwits.sms.service.impl{StudentServiceImpl.java[StudentServiceImpl^dao" name="repo" references="true" setter="false" stamp="1701409207584" textual="false" version="1.0"/>
+</session>

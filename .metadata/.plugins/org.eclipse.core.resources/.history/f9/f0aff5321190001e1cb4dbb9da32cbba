@@ -1,0 +1,17 @@
+package in.co.vwits.sms.repository;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import in.co.vwits.sms.model.Student;
+
+// jpa repositry gives of lot of build in method for crude operation which we don't have to implement at all
+public interface StudentRepository extends JpaRepository<Student, Integer> {
+	List<Student> findAllWithSubjects() ;
+	Student findOneWithSubjectsLearning(int rollNo);
+	
+	
+
+}

@@ -1,0 +1,36 @@
+package in.co.vwits.sms.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import in.co.vwits.sms.model.Student;
+import in.co.vwits.sms.model.User;
+import in.co.vwits.sms.repository.UserRepository;
+import in.co.vwits.sms.service.UserServices;
+
+@Service
+public class UserServicesImpl implements UserServices {
+	@Autowired
+	private UserRepository UserRepository;
+
+	@Override
+	public User save1(User user) {
+		return this.UserRepository.save(user);
+	}
+
+	@Override
+	public User getUserById(Long userId) {
+		return this.UserRepository.getById(userId);
+		}
+
+	@Override
+	public List<User> getAllUsers(Long userId) {
+		return this.UserRepository.findAll();
+	}
+
+
+/
+	
+}

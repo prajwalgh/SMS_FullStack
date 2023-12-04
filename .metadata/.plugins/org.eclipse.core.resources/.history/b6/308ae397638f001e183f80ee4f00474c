@@ -1,0 +1,76 @@
+package in.co.vwits.sms.dao.impl;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+
+import org.springframework.stereotype.Repository;
+
+import in.co.vwits.sms.dao.StudentDao;
+import in.co.vwits.sms.model.Student;
+
+@Repository
+public class StudentJpaDaoImpl implements StudentDao {
+	@PersistenceContext
+	private EntityManager em;
+	
+	@Override
+	public int save(Student s) {
+		em.persist(s); // This fires insert QUERY
+		return 1;
+	}
+
+	@Override
+	public void deleteStudent(int rollno) {
+		em.remove(em.find(Student.class, rollno)); // This fires delete QUERY
+
+	}
+
+	@Override
+	public Optional<Student> findByRollNo(int rollno) {
+		Student e = em.find(Student.class, rollno); // This fires select QUERY
+		return Optional.ofNullable(e);
+	}
+
+	@Override
+	public List<Student> findAll() {
+		String jpql = "FROM Student";
+		TypedQuery<Student> query = em.createQuery(jpql, Student.class);
+		List<Student> studentList = query.getResultList();
+		return studentList;
+	}
+
+	@Override
+	public void updateMark(int rollno, double mark) {
+
+		Student s = new Student();
+		s.setRollno(rollno);
+		s.setPercentage(mark);
+		em.merge(s);	// This fires delete QUERY 
+	}
+
+	@Override
+	public void updateByRollno(Student s) {
+		em.merge(s); // This fires delete QUERY
+	}
+
+	@Override
+	public List<Student> findAllWithSubjects() {
+		String jpql = "FROM Student AS s LEFT JOIN FETCH s.subjectsLearning"; 
+		List<Student> studentList = em.createNamedQuery("findAllWithSubjects", Student.class).getResultList();
+		return studentList;
+	}
+
+	@Override
+	public Optional<Student> findOneWithSubjectsLearning(int r) {
+		String jpql = "FROM Student AS s LEFT JOIN FETCH s.subjectsLearning WHERE s.rollno = :rno";
+		TypedQuery<Student> query = em.createQuery(jpql, Student.class);
+		query.setParameter("rno", r);
+		Student s = query.getSingleResult();
+		return Optional.of(s);
+	}
+
+}

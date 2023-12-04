@@ -1,0 +1,78 @@
+package in.co.vwits.sms.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import in.co.vwits.sms.model.Student;
+//@Controller is use to create web controllers 
+@Controller
+public class StudentController {
+
+	@RequestMapping("/hi")//hi us uri
+	public String Welcome() {
+		System.out.println("welcome");
+		return "home"; //this string is view that we are returning from server to client client
+		//generally this is view in jsp file but with rising popularity of client -side framework angular and react
+		// this way of building web application is declining day by day, instead
+		//rest web services are build on server side. and they are consumed by clied side applicatio sucn as react,angular.
+	}
+	
+	@ResponseBody
+	@RequestMapping("/welcome")
+	public String sayHello() {
+		return "Hello"; // this string must be return as data 
+	}
+	@ResponseBody
+	@RequestMapping(value="/student/{rollno}",method=RequestMethod.GET)  //{id} is known as path holder to fetch its value spring offers annotation @PlaceVariabel 
+	public Student findStudentById(@PathVariable int rollno) {
+		System.out.println(rollno);
+		Student s=new Student();
+		s.setRollno(1);
+		s.setName("amot");
+		return s;//here we are returning student java object but it doesn't make any sense
+		//to client application as client application might be build in some other programming
+		//language such as angular or react. Hence, this java object must be converted so it
+		//can be understood by other programming languages.
+		//The most common format of exchanging the data among different applications is JSON.
+		//Hence, this java object must be converted to JSON object.
+		//Though it is possible to do this manual conversion, but this is time consuming-error prone.
+		//Hence, spring offers solution to this problem using the concept known as messageConverters.
+		//But in order to help spring's messageConverter to this conversion we have to add appropriate
+		//libraries (dependencies).
+		//Most popular open source library for JAVA to JSON and JSON to JAVA conversion is: Jackson. 
+	}
+	@ResponseBody
+	@RequestMapping(value="/student/{id}",method=RequestMethod.DELETE)  //{id} is known as path holder to fetch its value spring offers annotation @PlaceVariabel 
+	public void deleteByID(@PathVariable int id) {
+		System.out.println("delete by id : "+ id);
+//		
+		 // this string must be return as data 
+	}
+	@ResponseBody
+	@RequestMapping(value="/student",method=RequestMethod.GET)  //{id} is known as path holder to fetch its value spring offers annotation @PlaceVariabel 
+	public List<Student> findAll() {
+		List<Student> studentList=new ArrayList<Student>();
+		Student s1=new Student();
+		s1.setRollno(2);
+		s1.setName("amit");
+		Student s2=new Student();
+		s2.setRollno(3);
+		s2.setName("bhavesh");
+		studentList.add(s1);
+		studentList.add(s2);
+		return studentList;
+		}
+	@ResponseBody
+	@RequestMapping(value="/student/{id}/{name}",method=RequestMethod.POST)  //{id} is known as path holder to fetch its value spring offers annotation @PlaceVariabel 
+	public void deleteByID(@PathVariable int id,@PathVariable int name) {
+		System.out.println("update by id : "+ id+" ,updated name is "+name);
+		
+	}
+	
+}

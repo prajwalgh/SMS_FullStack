@@ -1,0 +1,31 @@
+package in.co.vwits.sms.rest.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import in.co.vwits.sms.model.Student;
+import in.co.vwits.sms.service.StudentService;
+import in.co.vwits.sms.service.UserServices;
+
+@RestController
+@RequestMapping(value="/api/user")
+public class UserRestController {
+	@Autowired
+    private UserServices service;
+	@PostMapping
+	public Student createNewStudent(@RequestBody Student s) {
+		 this.service.save(s);
+		 return s;
+	}
+	
+	
+	@GetMapping(value="/{id}")
+	public Student findById(@PathVariable int id) {
+		return service.getUserById(id).get();
+	}
+}

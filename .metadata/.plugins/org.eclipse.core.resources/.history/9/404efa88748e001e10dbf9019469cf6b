@@ -1,0 +1,26 @@
+HTTP: HyperText Transfer Protocol
+Url is uniform resource locator, helps to identify resource uniquely on web.
+url consists of following thing:
+	protocol://
+	DNS: domain name system
+	OR 
+	protocol://ipaddress:portno/contextroot/resource
+example:
+	http://localhost:8080/1-Sprint-Mvc-Demo/hi
+=====================Spring Web MVC===================================
+	-so far we have been writing standalone application using spring.
+	-The beauty of spring framework is it allows you to build 
+	-different type of application like web apps, rest end point ,etc.
+	-For all this different applications sprint gives you different module 
+	-writing web application is very common requirement these days.
+	-To wire web application spring has a module known as spring web mvc .
+	-Spring WEB MVC is internally based on java servlate api.
+
+------------------------------------------------------------------------
+Following are the step to use web MVC.
+	Step 1: Add appropriate dependencies in pom.xml
+	Step 2: create a configuration class  and annotate this class with @EnableWebMvc
+	Step 3: create webconfig class which is extended from  	AbstractAnnotationConfigDispatcherServletInitializer
+	Step 4: Overwrite method
+	Step 5: Write controller class annotation this class with @Controller
+	Step 6:

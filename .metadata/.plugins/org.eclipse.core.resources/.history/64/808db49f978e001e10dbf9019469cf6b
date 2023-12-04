@@ -1,0 +1,14 @@
+package in.co.vwits.sms.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class StudentController {
+
+	@RequestMapping("/hi")
+	public String Welcome() {
+		System.out.println("welcome");
+		return "home";
+	}
+}

@@ -1,0 +1,2 @@
+INDEX VERSION 1.134+C:\traning\Day-25 and 26\FullStackAngular\sms_api_springboot_backend\.metadata\.plugins\org.eclipse.jdt.core
+1865797976.index

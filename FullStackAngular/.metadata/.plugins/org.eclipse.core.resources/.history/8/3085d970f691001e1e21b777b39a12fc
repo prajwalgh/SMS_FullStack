@@ -1,0 +1,16 @@
+package in.co.vwits.sms.model;
+
+import javax.annotation.Generated;
+import javax.persistence.Entity;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.id;
+
+@Entity
+@Table(name="tbl_user")
+public class user {
+	@Id
+	@Generated(strategy=GenerationType.AUTO)
+	private Long Id;
+	
+}

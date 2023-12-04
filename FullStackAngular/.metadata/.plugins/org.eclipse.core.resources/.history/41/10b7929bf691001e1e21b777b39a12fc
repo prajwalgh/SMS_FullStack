@@ -1,0 +1,25 @@
+package in.co.vwits.sms.model;
+
+import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="tbl_user")
+public class user {
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long Id;
+	@Column(name="username",nullable=false)
+	private String username;
+	@Column(name="email",nullable=false)
+	private String email;
+	@Column(name="password",nullable=false)
+	private String password;
+	
+
+}

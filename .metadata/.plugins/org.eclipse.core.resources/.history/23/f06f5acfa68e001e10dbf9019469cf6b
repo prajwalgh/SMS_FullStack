@@ -1,0 +1,6 @@
+package in.co.vwits.sms.model;
+
+public class Student {
+	private int rollno;
+	private String name;
+}
